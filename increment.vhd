@@ -30,10 +30,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity increment is
-    Port ( cin : in  STD_LOGIC;
-			  a, b : in  STD_LOGIC_vector(3 downto 0);
-           s : out  STD_LOGIC_vector(3 downto 0);
-           cout : out  STD_LOGIC);
+    Port ( cin : in  STD_LOGIC; -- Entrada Carry In
+			  a, b : in  STD_LOGIC_vector(3 downto 0); -- Entrada de dois vetores de 4 bits
+           s : out  STD_LOGIC_vector(3 downto 0); -- Saída de um vetor de 4 bits
+           cout : out  STD_LOGIC); -- Saída Carry Out
 
 end increment;
 architecture Behavioral of increment is
@@ -42,7 +42,7 @@ architecture Behavioral of increment is
 	END COMPONENT;
 	SIGNAL t: std_logic_vector(3 downto 1);
 begin
-	FA5: adder PORT MAP('1',a(0),'0',s(0),t(1));
+	FA5: adder PORT MAP('1',a(0),'0',s(0),t(1)); -- Soma do vetor "a" com um Carry In de Valor 1 para gerar o incremento usando um somador completo de 4 bits
 	FA6: adder PORT MAP(t(1),a(1),'0',s(1),t(2));
 	FA7: adder PORT MAP(t(2),a(2),'0',s(2),t(3));
 	FA8: adder PORT MAP(t(3),a(3),'0',s(3),Cout);
