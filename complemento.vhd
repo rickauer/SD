@@ -31,10 +31,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity complemento is
-    Port ( cin : in  STD_LOGIC;
-			  a, b : in  STD_LOGIC_vector(3 downto 0);
-           s : out  STD_LOGIC_vector(3 downto 0);
-           cout : out  STD_LOGIC);
+    Port ( cin : in  STD_LOGIC; -- Entrada Carry In
+			  a, b : in  STD_LOGIC_vector(3 downto 0); -- Entrada Vetores de 4 bits
+           s : out  STD_LOGIC_vector(3 downto 0); -- Saída Vetor de bits 
+           cout : out  STD_LOGIC); -- Saída Carry Out
 
 end complemento;
 architecture Behavioral of complemento is
@@ -43,7 +43,7 @@ architecture Behavioral of complemento is
 	END COMPONENT;
 	SIGNAL t: std_logic_vector(3 downto 1);
 begin
-	FA5: adder PORT MAP('1',NOT a(0),'0',s(0),t(1));
+	FA5: adder PORT MAP('1',NOT a(0),'0',s(0),t(1)); -- Agora, estamos invertendo o vetor "a" e somando com o vetor "0000" com carry de entrada 1 para fazer o complemento a dois
 	FA6: adder PORT MAP(t(1),NOT a(1),'0',s(1),t(2));
 	FA7: adder PORT MAP(t(2),NOT a(2),'0',s(2),t(3));
 	FA8: adder PORT MAP(t(3),NOT a(3),'0',s(3),Cout);
