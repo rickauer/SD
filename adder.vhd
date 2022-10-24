@@ -30,16 +30,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity adder is
-    Port ( cin : in  STD_LOGIC;
-			  a, b : in  STD_LOGIC;
-           s : out  STD_LOGIC;
-           cout : out  STD_LOGIC);
+    Port ( cin : in  STD_LOGIC; -- Entrada Carry In
+			  a, b : in  STD_LOGIC; -- Entrada dos vetores de 4 bits
+           s : out  STD_LOGIC; -- Saída dos vetores de 4 bits
+           cout : out  STD_LOGIC); -- Saída Carry Out
 end adder;
 
 architecture dataflow of adder is
 
 begin
-s<=a XOR b XOR cin;
+s<=a XOR b XOR cin; -- Esse é o código do Somador Completo Bit a Bit
 cout<=(a AND b) OR (a AND cin) OR (b AND cin);
 
 end dataflow;
