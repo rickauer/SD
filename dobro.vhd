@@ -40,11 +40,11 @@ architecture Behavioral of dobro is
 	component adder -- aqui chamamos o component adder para poder utilizar o módulo já feito adder posteriormente no begin
 		PORT(x,y,z: IN std_logic; Sum, Carry: OUT std_logic);
 	END COMPONENT;
-	SIGNAL t: std_logic_vector(3 downto 1); -- utilizamos o signal t para passar os bits de carry's de entrada/saída nos somadores bit a bit
+	SIGNAL t: std_logic_vector(3 downto 1); -- aqui utilizamos o signal t para atribuir os carry's de entrada/saída bit a bit
 begin
-	FA1: adder PORT MAP('0',a(0),a(0),s(0),t(1));
+	FA1: adder PORT MAP('0',a(0),a(0),s(0),t(1)); -- aqui somamos o vetor "a" com ele mesmo para produzir o dobro de "a"
 	FA2: adder PORT MAP(t(1),a(1),a(1),s(1),t(2));
 	FA3: adder PORT MAP(t(2),a(2),a(2),s(2),t(3));
 	FA4: adder PORT MAP(t(3),a(3),a(3),s(3),Cout);
-	f3 <= t(3) ;
+	f3 <= t(3) ; -- aqui atribuímos o penúltimo carry out à f3
 end Behavioral;
