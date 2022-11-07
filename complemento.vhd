@@ -30,11 +30,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 
-entity complemento is
+entity complemento is -- complemento a dois de um vetor
     Port ( cin : in  STD_LOGIC;
-			  a, b : in  STD_LOGIC_vector(3 downto 0);
-           s : out  STD_LOGIC_vector(3 downto 0);
-           cout : out  STD_LOGIC);
+			  a, b : in  STD_LOGIC_vector(3 downto 0); -- recebe dois vetores de 4 bits de entrada, sendo que o vetor a ter seu complemento é sempre o "a"
+           s : out  STD_LOGIC_vector(3 downto 0); -- saída de um vetor de 4 bits
+           cout : out  STD_LOGIC); -- saída do 
 
 end complemento;
 architecture Behavioral of complemento is
