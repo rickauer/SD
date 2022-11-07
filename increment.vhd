@@ -33,7 +33,7 @@ entity increment is
     Port ( cin : in  STD_LOGIC;
 			  a, b : in  STD_LOGIC_vector(3 downto 0);
            s : out  STD_LOGIC_vector(3 downto 0);
-           cout : out  STD_LOGIC);
+           cout,f3 : out  STD_LOGIC);
 
 end increment;
 architecture Behavioral of increment is
@@ -42,9 +42,9 @@ architecture Behavioral of increment is
 	END COMPONENT;
 	SIGNAL t: std_logic_vector(3 downto 1);
 begin
-	FA5: adder PORT MAP('1',a(0),'0',s(0),t(1));
-	FA6: adder PORT MAP(t(1),a(1),'0',s(1),t(2));
-	FA7: adder PORT MAP(t(2),a(2),'0',s(2),t(3));
-	FA8: adder PORT MAP(t(3),a(3),'0',s(3),Cout);
-
+	FA1: adder PORT MAP('1',a(0),'0',s(0),t(1));
+	FA2: adder PORT MAP(t(1),a(1),'0',s(1),t(2));
+	FA3: adder PORT MAP(t(2),a(2),'0',s(2),t(3));
+	FA4: adder PORT MAP(t(3),a(3),'0',s(3),Cout);
+	f3 <= t(3) ;
 end Behavioral;
