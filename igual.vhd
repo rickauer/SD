@@ -33,7 +33,7 @@ entity igual is
     Port ( cin : in  STD_LOGIC;
 			  a, b : in  STD_LOGIC_vector(3 downto 0);
            s : out  STD_LOGIC_vector(3 downto 0);
-           cout : out  STD_LOGIC);
+           cout,f3 : out  STD_LOGIC);
 end igual;
 
 architecture Behavioral of igual is
@@ -41,7 +41,7 @@ architecture Behavioral of igual is
 begin
 		s <= "0001" WHEN a = b
 		ELSE "0000";
-
+		f3 <= '0';
 end Behavioral;
 
 
