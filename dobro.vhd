@@ -29,18 +29,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity dobro is
-    Port ( cin : in  STD_LOGIC;
-			  a, b : in  STD_LOGIC_vector(3 downto 0);
-           s : out  STD_LOGIC_vector(3 downto 0);
-           cout,f3 : out  STD_LOGIC);
+entity dobro is -- faremos o dobro do vetor "a"
+    Port ( cin : in  STD_LOGIC; -- entrada de bit Carry In
+			  a, b : in  STD_LOGIC_vector(3 downto 0); -- dois vetores de entrada de 4 bits, sendo que o vetor "a" é o que será dobrado
+           s : out  STD_LOGIC_vector(3 downto 0); -- vetor de saída s
+           cout,f3 : out  STD_LOGIC); -- bits de saída, Carry Out e penúltimo Carry Out, respectivamente
 
 end dobro;
 architecture Behavioral of dobro is
-	component adder
+	component adder -- aqui chamamos o component adder para poder utilizar o módulo já feito adder posteriormente no begin
 		PORT(x,y,z: IN std_logic; Sum, Carry: OUT std_logic);
 	END COMPONENT;
-	SIGNAL t: std_logic_vector(3 downto 1);
+	SIGNAL t: std_logic_vector(3 downto 1); -- utilizamos o signal t para passar os bits de carry's de entrada/saída nos somadores bit a bit
 begin
 	FA1: adder PORT MAP('0',a(0),a(0),s(0),t(1));
 	FA2: adder PORT MAP(t(1),a(1),a(1),s(1),t(2));
