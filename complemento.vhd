@@ -30,11 +30,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 
-entity complemento is -- complemento a dois de um vetor
+entity complemento is
     Port ( cin : in  STD_LOGIC;
-			  a, b : in  STD_LOGIC_vector(3 downto 0); -- recebe dois vetores de 4 bits de entrada, sendo que o vetor a ter seu complemento é sempre o "a"
-           s : out  STD_LOGIC_vector(3 downto 0); -- saída de um vetor de 4 bits
-           cout : out  STD_LOGIC); -- saída do 
+			  a, b : in  STD_LOGIC_vector(3 downto 0);
+           s : out  STD_LOGIC_vector(3 downto 0);
+           cout,f3: out  STD_LOGIC);
 
 end complemento;
 architecture Behavioral of complemento is
@@ -43,11 +43,11 @@ architecture Behavioral of complemento is
 	END COMPONENT;
 	SIGNAL t: std_logic_vector(3 downto 1);
 begin
-	FA5: adder PORT MAP('1',NOT a(0),'0',s(0),t(1));
-	FA6: adder PORT MAP(t(1),NOT a(1),'0',s(1),t(2));
-	FA7: adder PORT MAP(t(2),NOT a(2),'0',s(2),t(3));
-	FA8: adder PORT MAP(t(3),NOT a(3),'0',s(3),Cout);
-
+	FA1: adder PORT MAP('1',NOT a(0),'0',s(0),t(1));
+	FA2: adder PORT MAP(t(1),NOT a(1),'0',s(1),t(2));
+	FA3: adder PORT MAP(t(2),NOT a(2),'0',s(2),t(3));
+	FA4: adder PORT MAP(t(3),NOT a(3),'0',s(3),Cout);
+	f3 <= t(3) ;
 end Behavioral;
 
 
