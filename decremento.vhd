@@ -33,7 +33,7 @@ entity decremento is
     Port ( cin : in  STD_LOGIC;
 			  a, b : in  STD_LOGIC_vector(3 downto 0);
            s : out  STD_LOGIC_vector(3 downto 0);
-           cout : out  STD_LOGIC);
+           cout,f3 : out  STD_LOGIC);
 
 end decremento;
 architecture Behavioral of decremento is
@@ -46,7 +46,7 @@ begin
 	FA2: adder PORT MAP(t(1),a(1),'1',s(1),t(2));
 	FA3: adder PORT MAP(t(2),a(2),'1',s(2),t(3));
 	FA4: adder PORT MAP(t(3),a(3),'1',s(3),Cout);
-
+	f3 <= t(3) ;
 end Behavioral;
 
 
